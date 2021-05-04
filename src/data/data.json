@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Device-1",
+    "ip": "127.0.0.1",
+    "coordinates": {
+      "latitude": 41.19717306197566,
+      "longitude": 28.945141445890712
+    }
+  },
+  {
+    "name": "Device-2",
+    "ip": "127.0.0.2",
+    "coordinates": {
+      "latitude": 41.145857894170376,
+      "longitude": 28.863129072625334
+    }
+  },
+  {
+    "name": "Device-3",
+    "ip": "127.0.0.3",
+    "coordinates": {
+      "latitude": 41.024783958592835,
+      "longitude": 28.6432313183654
+    }
+  },
+  {
+    "name": "Device-4",
+    "ip": "127.0.0.4",
+    "coordinates": {
+      "latitude": 41.102333391880016,
+      "longitude": 29.172926692855317
+    }
+  },
+  {
+    "name": "Device-5",
+    "ip": "127.0.0.5",
+    "coordinates": {
+      "latitude": 41.18627105268183,
+      "longitude": 29.319298898460275
+    }
+  }
+]
