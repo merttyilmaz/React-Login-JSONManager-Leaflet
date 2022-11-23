@@ -2,10 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { BiSun } from "react-icons/bi";
+import { BsMoonStarsFill } from "react-icons/bs";
 
 import Logo from "@/assets/images/logo.svg";
 import Input from "./Input";
 import { useAuthStore } from "@/store/auth";
+import { useThemeStore } from "@/store/theme";
 
 const loginSchema = z
   .object({
@@ -29,6 +32,7 @@ export type FormData = z.infer<typeof loginSchema>;
 
 const LoginForm = () => {
   const { setLogin } = useAuthStore();
+  const { theme, changeTheme } = useThemeStore();
 
   const {
     register,
@@ -44,7 +48,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="bg-black text-white flex flex-col gap-6 pt-28 w-full xl:w-1/4 h-screen">
+    <div className="bg-white text-black dark:bg-black dark:text-white flex flex-col gap-6 pt-28 w-full xl:w-1/4 h-screen">
       <div className="flex flex-col items-center">
         <img src={Logo} alt="Logo" className="w-28 h-28" />
         <h3 className="uppercase text-lg">Smart transportation skills</h3>
@@ -70,9 +74,17 @@ const LoginForm = () => {
           error={errors.password?.message}
         />
         <div className="flex w-full items-center justify-between">
-          <button className="bg-black text-white py-2 px-4 rounded-md hover:bg-slate-800">
-            Settings
-          </button>
+          {theme === "light" ? (
+            <BsMoonStarsFill
+              className="text-2xl cursor-pointer hover:text-slate-800"
+              onClick={() => changeTheme("dark")}
+            />
+          ) : (
+            <BiSun
+              className="text-2xl cursor-pointer"
+              onClick={() => changeTheme("light")}
+            />
+          )}
           <button
             type="submit"
             className="bg-black text-white py-2 px-4 rounded-md hover:bg-slate-800"
