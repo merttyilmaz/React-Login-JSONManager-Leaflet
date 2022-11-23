@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,6 +8,8 @@ import {
 
 import Loading from "@/common/components/loading";
 import { useAuthStore } from "./store/auth";
+import Sidebar from "./pages/layout/Sidebar";
+import Layout from "./pages/layout";
 
 const LoginPage = lazy(() => import("@/pages/login/Login"));
 const DevivesPage = lazy(() => import("@/pages/devices/Devices"));
@@ -34,10 +36,12 @@ function App() {
     <Router>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/devices" element={<DevivesPage />} />
-          <Route path="/map" element={<MapPage />} />
-          <Route path="/alarm" element={<AlarmPage />} />
-          <Route path="*" element={<Navigate to="/devices" replace />} />
+          <Route element={<Layout />}>
+            <Route path="/devices" element={<DevivesPage />} />
+            <Route path="/map" element={<MapPage />} />
+            <Route path="/alarm" element={<AlarmPage />} />
+            <Route path="*" element={<Navigate to="/devices" replace />} />
+          </Route>
         </Routes>
       </Suspense>
     </Router>
