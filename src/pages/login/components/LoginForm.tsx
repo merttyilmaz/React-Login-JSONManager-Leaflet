@@ -1,22 +1,47 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import Logo from "@/assets/images/logo.svg";
 import Input from "./Input";
+import { useAuthStore } from "@/store/auth";
 
-export type FormData = {
-  username: string;
-  password: string;
-};
+const loginSchema = z
+  .object({
+    username: z
+      .string()
+      .min(5, { message: "Username must be atleast 5 characters" }),
+    password: z
+      .string()
+      .min(5, { message: "Password must be atleast 5 characters" }),
+  })
+  .refine((data) => data.username === "admin", {
+    path: ["username"], // path of error
+    message: "Wrong username", // error message
+  })
+  .refine((data) => data.password === "admin", {
+    path: ["password"], // path of error
+    message: "Wrong password", // error message
+  });
+
+export type FormData = z.infer<typeof loginSchema>;
 
 const LoginForm = () => {
+  const { setLogin } = useAuthStore();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    resolver: zodResolver(loginSchema),
+    mode: "onSubmit",
+  });
 
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = () => {
+    setLogin(true);
+  };
 
   return (
     <div className="bg-black text-white flex flex-col gap-6 pt-28 w-full xl:w-1/4 h-screen">
@@ -34,6 +59,7 @@ const LoginForm = () => {
           type="text"
           placeholder="E.g: admin"
           register={register}
+          error={errors.username?.message}
         />
         <Input
           id="password"
@@ -41,14 +67,23 @@ const LoginForm = () => {
           type="password"
           placeholder="E.g: admin"
           register={register}
+          error={errors.password?.message}
         />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 rounded-md"
-        >
-          Login
-        </button>
+        <div className="flex w-full items-center justify-between">
+          <button className="bg-black text-white py-2 px-4 rounded-md hover:bg-slate-800">
+            Settings
+          </button>
+          <button
+            type="submit"
+            className="bg-black text-white py-2 px-4 rounded-md hover:bg-slate-800"
+          >
+            Login
+          </button>
+        </div>
       </form>
+      <h3 className="text-yellow-500 text-2xl text-bold text-center mt-auto mb-8 uppercase">
+        Intetra
+      </h3>
     </div>
   );
 };

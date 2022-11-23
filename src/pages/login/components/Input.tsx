@@ -3,11 +3,12 @@ import { UseFormRegister } from "react-hook-form";
 import { FormData } from "./LoginForm";
 
 type Props = {
-  register: UseFormRegister<FormData>;
   id: string;
   label: string;
   type: string;
   placeholder: string;
+  register: UseFormRegister<FormData>;
+  error?: string;
 };
 
 const Input = (props: Props) => {
@@ -23,6 +24,9 @@ const Input = (props: Props) => {
         className="border rounded-md outline-yellow-500 p-2 text-white bg-gray-900 focus:bg-black"
         {...props.register(props.id as keyof FormData)}
       />
+      {props.error && (
+        <span className="text-red-500 text-sm">{props.error}</span>
+      )}
     </div>
   );
 };
