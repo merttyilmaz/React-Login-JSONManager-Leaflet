@@ -25,7 +25,7 @@ const Devices = () => {
   useEffect(() => {
     if (selectedDevice.name === "" && device && data) {
       const findDeviceFromUrl = data?.find(
-        (devices) => devices.name.toLowerCase() === device
+        (devices: Device) => devices.name.toLowerCase() === device
       );
 
       if (findDeviceFromUrl === undefined) {
@@ -38,7 +38,7 @@ const Devices = () => {
   }, [device, data]);
 
   const search = data?.filter(
-    (device) =>
+    (device: Device) =>
       device.name.toLowerCase().includes(searchTerm) ||
       device.ip.toLowerCase().includes(searchTerm)
   );
