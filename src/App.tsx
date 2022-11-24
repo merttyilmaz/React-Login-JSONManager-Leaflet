@@ -12,7 +12,7 @@ import Sidebar from "./pages/layout/Sidebar";
 import Layout from "./pages/layout";
 
 const LoginPage = lazy(() => import("@/pages/login/Login"));
-const DevivesPage = lazy(() => import("@/pages/devices/Devices"));
+const DevicesPage = lazy(() => import("@/pages/devices/Devices"));
 const MapPage = lazy(() => import("@/pages/map/Map"));
 const AlarmPage = lazy(() => import("@/pages/alarm/Alarm"));
 
@@ -37,7 +37,8 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route element={<Layout />}>
-            <Route path="/devices" element={<DevivesPage />} />
+            <Route path="/devices" element={<DevicesPage />} />
+            <Route path="/devices/:device" element={<DevicesPage />} />
             <Route path="/map" element={<MapPage />} />
             <Route path="/alarm" element={<AlarmPage />} />
             <Route path="*" element={<Navigate to="/devices" replace />} />
