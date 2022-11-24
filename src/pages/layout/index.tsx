@@ -5,11 +5,9 @@ import Sidebar from "./Sidebar";
 const Layout = () => (
   <div className="flex">
     <Sidebar />
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full h-screen text-white bg-[#1f1f1f]">
       <Header />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
     </div>
   </div>
 );

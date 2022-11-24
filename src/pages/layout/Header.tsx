@@ -13,7 +13,7 @@ const Header = () => {
   const { theme, changeTheme } = useThemeStore();
 
   return (
-    <div className=" text-white bg-[#1f1f1f] px-4 py-6 flex items-center justify-between">
+    <div className="px-4 py-6 flex items-center justify-between">
       <h1 className="text-3xl font-bold capitalize">{pageTitle}</h1>
       <div className="flex items-center gap-6">
         {theme === "light" ? (
