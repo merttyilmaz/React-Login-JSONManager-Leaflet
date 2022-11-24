@@ -8,7 +8,7 @@ import DeviceDetails from "./components/DeviceDetails";
 import Loading from "@/common/components/loading";
 
 const Devices = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [query, setQuery] = useState("");
   const [selectedDevice, setSelectedDevice] = useState<Device>({
     name: "",
     ip: "",
@@ -39,11 +39,11 @@ const Devices = () => {
 
   const search = data?.filter(
     (device: Device) =>
-      device.name.toLowerCase().includes(searchTerm) ||
-      device.ip.toLowerCase().includes(searchTerm)
+      device.name.toLowerCase().includes(query) ||
+      device.ip.toLowerCase().includes(query)
   );
 
-  const searchedDevices = searchTerm ? search : data;
+  const searchedDevices = query ? search : data;
 
   return (
     <div className="h-full">
@@ -57,7 +57,7 @@ const Devices = () => {
         <div className="flex h-full w-full">
           <Searchbar
             searchedDevices={searchedDevices}
-            setSearchTerm={setSearchTerm}
+            setQuery={setQuery}
             setSelectedDevice={setSelectedDevice}
           />
           {selectedDevice?.name?.length !== 0 && (
