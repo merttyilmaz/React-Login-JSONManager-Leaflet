@@ -5,7 +5,7 @@ import { useGetDevices } from "@/hooks/useGetDevices";
 import Searchbar from "./components/SearchSidebar";
 import { Device } from "@/utils/typings";
 import DeviceDetails from "./components/DeviceDetails";
-import Loading from "@/common/components/loading";
+import Loading from "@/components/loading";
 
 const Devices = () => {
   const [query, setQuery] = useState("");
