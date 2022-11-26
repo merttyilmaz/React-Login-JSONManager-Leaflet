@@ -8,25 +8,22 @@ const Sidebar = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="h-screen max-w-fit bg-white text-black dark:bg-black dark:text-white flex flex-col pt-20 px-6 gap-10">
+    <div className="h-screen max-w-fit bg-slate-200 text-black dark:bg-black dark:text-white flex flex-col pt-20 px-6 gap-10">
       <Link to="/devices">
         <TfiHarddrive
-          className={`text-3xl  cursor-pointer hover:text-yellow-500 ${
-            pathname === "/devices" ? "text-yellow-500" : "text-slate-300"
+          className={`text-3xl cursor-pointer hover:text-yellow-500 ${
+            pathname === "/devices"
+              ? "text-yellow-500"
+              : " text-black dark:text-slate-300"
           }`}
         />
       </Link>
       <Link to="/map">
         <BsMap
           className={`text-3xl  cursor-pointer hover:text-yellow-500 ${
-            pathname === "/map" ? "text-yellow-500" : "text-slate-300"
-          }`}
-        />
-      </Link>
-      <Link to="/alarm">
-        <BsBell
-          className={`text-3xl  cursor-pointer hover:text-yellow-500 ${
-            pathname === "/alarm" ? "text-yellow-500" : "text-slate-300"
+            pathname === "/map"
+              ? "text-yellow-500"
+              : "text-black dark:text-slate-300"
           }`}
         />
       </Link>

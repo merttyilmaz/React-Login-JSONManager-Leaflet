@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { useGetDevices } from "@/hooks/useGetDevices";
-import Searchbar from "./components/SearchSidebar";
+import SearchSidebar from "./components/SearchSidebar";
 import { Device } from "@/utils/typings";
 import DeviceDetails from "./components/DeviceDetails";
 import Loading from "@/components/loading";
@@ -55,7 +55,7 @@ const Devices = () => {
         </div>
       ) : (
         <div className="flex h-full w-full">
-          <Searchbar
+          <SearchSidebar
             searchedDevices={searchedDevices}
             setQuery={setQuery}
             setSelectedDevice={setSelectedDevice}

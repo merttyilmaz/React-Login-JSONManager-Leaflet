@@ -18,7 +18,7 @@ const Header = () => {
       <div className="flex items-center gap-6">
         {theme === "light" ? (
           <BsMoonStarsFill
-            className="text-2xl cursor-pointer hover:text-slate-800"
+            className="text-2xl cursor-pointer "
             onClick={() => changeTheme("dark")}
           />
         ) : (
@@ -29,7 +29,7 @@ const Header = () => {
         )}
         <button
           type="submit"
-          className="bg-white text-black font-bold py-2 px-4 rounded-md hover:bg-slate-800"
+          className="bg-white text-black font-bold py-2 px-4 rounded-md hover:bg-slate-300"
           onClick={() => setLogin(false)}
         >
           Sign out

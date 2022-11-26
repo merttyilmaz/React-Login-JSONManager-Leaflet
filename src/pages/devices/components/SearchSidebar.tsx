@@ -13,7 +13,7 @@ const Searchbar = (props: Props) => {
   const params = useParams();
 
   return (
-    <section className="h-full bg-[#393939] w-1/4 pt-4 ">
+    <section className="h-full text-white bg-[#393939] w-1/4 pt-4 ">
       <div className="px-2">
         <input
           type="text"
