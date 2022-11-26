@@ -61,7 +61,7 @@ const LoginForm = () => {
           id="username"
           label="Username"
           type="text"
-          placeholder="E.g: admin"
+          placeholder="Example: admin"
           register={register}
           error={errors.username?.message}
         />
@@ -69,7 +69,7 @@ const LoginForm = () => {
           id="password"
           label="Password"
           type="password"
-          placeholder="E.g: admin"
+          placeholder="Example: admin"
           register={register}
           error={errors.password?.message}
         />
